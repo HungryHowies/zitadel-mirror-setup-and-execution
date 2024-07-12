@@ -47,9 +47,7 @@ sudo mv zitadel-linux-amd64/zitadel /usr/local/bin/
 ```
 cd /usr/local/bin/
 ```
-```
-vi defaults.yaml
-```
+
 
 ### Let's encrypt
 ```
