@@ -1559,7 +1559,7 @@ systemctl daemon-reload
 systemctl start zitadel
 ```
 
-### No Isssue,  proceed to Migration Mirror from CockroachDB to Postgresql
+### No Isssue,  proceed to  Mirror from CockroachDB to Postgresql
 	 
 ### Postgres Install
 ```
