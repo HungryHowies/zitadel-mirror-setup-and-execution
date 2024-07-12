@@ -1,6 +1,11 @@
-The following   steps show my completed setup prior to  executing the mirror command from CockroachDB to PostgreSQL.
+The following steps show my completed setup prior to executing the mirror command. My goal is to mirror data from  CockroachDB to PostgreSQL.
+I was unable to mirror successfully and unsure where I am failing.
 
-Here is my environment:
+Using the following documantion for Mirror setup.
+
+https://zitadel.com/docs/self-hosting/manage/cli/mirror#use-cases
+
+### Environment:
 ```
 Ubuntu 22.0.4
 Zitadel version v2.54.6
