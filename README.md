@@ -44,10 +44,6 @@ tar -zxvf zitadel-linux-amd64.tar.gz
 ```
 sudo mv zitadel-linux-amd64/zitadel /usr/local/bin/
 ```
-```
-cd /usr/local/bin/
-```
-
 
 ### Let's encrypt
 ```
