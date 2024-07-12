@@ -1,3 +1,15 @@
+The following   steps show my completed setup prior to  executing the mirror command from CockroachDB to PostgreSQL.
+
+Here is my environment:
+```
+Ubuntu 22.0.4
+Zitadel version v2.54.6
+CockroachDB CCL v24.1.0 (  tried v23.2.6) && PostgreSQL 16
+2 CPU and 4GB RAM
+30 GB  drive
+Nginx  local installation                                                                                                                             
+Let’s encrypt  configured
+```
 ### CockroachDB
 ```
 curl https://binaries.cockroachdb.com/cockroach-v23.2.7.linux-amd64.tgz  | tar -zx && sudo cp -i cockroach-v23.2.7.linux-amd64/cockroach /usr/local/bin
