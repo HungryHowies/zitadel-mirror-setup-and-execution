@@ -9,7 +9,7 @@ https://zitadel.com/docs/self-hosting/manage/cli/mirror#use-cases
 ```
 Ubuntu 22.0.4
 Zitadel version v2.54.6
-CockroachDB CCL 23.2.7 (  tried v23.2.6) && PostgreSQL 16
+CockroachDB CCL 23.2.7 (tried v24) && PostgreSQL 16
 2 CPU and 4GB RAM
 30 GB  drive
 Nginx  local installation                                                                                                                             
