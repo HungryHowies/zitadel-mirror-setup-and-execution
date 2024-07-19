@@ -1654,7 +1654,7 @@ zitadel mirror --system --config /path/to/your/mirror/config.yaml # make sure to
 ### First Command executed no issues.
 
 ```
-root@zitadel003:/usr/local/bin# zitadel init --config /usr/local/bin/config.yaml
+root@zitadel003:/usr/local/bin# zitadel init --config /usr/local/bin/new-defaults.yaml
 INFO[0000] initialization started                        caller="/home/runner/work/zitadel/zitadel/cmd/initialise/init.go:75"
 INFO[0000] verify user                                   caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_user.go:39" username=zitadel
 INFO[0000] verify database                               caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_database.go:39" database=zitadel
@@ -1674,7 +1674,7 @@ root@zitadel003:/usr/local/bin#
 ### Second commnad  executeed no issues
 
  ```
-root@zitadel003:/usr/local/bin# zitadel setup --for-mirror --config /usr/local/bin/config.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
+root@zitadel003:/usr/local/bin# zitadel setup --for-mirror --config /usr/local/bin/new-defaults.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
 INFO[0000] setup started                                 caller="/home/runner/work/zitadel/zitadel/cmd/setup/setup.go:99"
 INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=14_events_push
 INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=01_tables
