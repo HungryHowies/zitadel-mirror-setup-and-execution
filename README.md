@@ -1582,8 +1582,14 @@ CREATE DATABASE zitadel;
 ```
 GRANT CONNECT, CREATE ON DATABASE zitadel TO zitadel;
 ```
+```
+ALTER USER zitadel PASSWORD 'zitadel';
+```
+```
+ALTER USER postgres PASSWORD 'postgres';
+```
 
-### Mirror  Configuration file
+### Mirror Configuration file
 ```
 vi config.yaml
 ```
@@ -1642,7 +1648,7 @@ Admin:
 Log:
   Level: info
 ```
-###  Create a new Defualt.yaml file
+###  Create a new Default.yaml file
 
 This file  will have the configuration for postgreSQL database.
 
@@ -1658,7 +1664,7 @@ Create New configuration file.
 vi defaults-new.yaml
 ```
 
-Add the folloing to  new configuration file.
+Add the folloing to  new configuration file is for PostgreSQL database.
 
 ```
 Log:
