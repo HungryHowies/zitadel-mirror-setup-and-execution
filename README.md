@@ -76,7 +76,7 @@ cd /usr/local/bin/
 ```
 vi defaults.yaml 
 ```
-Add the following to defaults.yaml file
+Add the following to defaults.yaml file this is to setup CockRoachDB.
 ```
 Log:
   Level: info # ZITADEL_LOG_LEVEL
