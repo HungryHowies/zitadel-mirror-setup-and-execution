@@ -1642,6 +1642,28 @@ Admin:
 Log:
   Level: info
 ```
+###  Create a new Defualt.yaml file
+
+This file  will have the configuration for postgreSQL database.
+
+Change Directory.
+
+```
+cd /usr/local/bin
+```
+
+Create New configuration file.
+
+```
+vi defaults-new.yaml
+```
+
+Add the folloing to  new configuration file.
+
+```
+
+
+
 
 From the offical documentations
 
