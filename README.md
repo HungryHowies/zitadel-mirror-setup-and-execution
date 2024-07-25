@@ -5,6 +5,8 @@ Using the following documantion for Mirror setup.
 
 https://zitadel.com/docs/self-hosting/manage/cli/mirror#use-cases
 
+Note: to 2.54.x, 2.55.x and 2.56.x
+
 ### Environment:
 ```
 Ubuntu 22.0.4
