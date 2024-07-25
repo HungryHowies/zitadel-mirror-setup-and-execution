@@ -67,6 +67,14 @@ ln -s /etc/nginx/sites-available/zitadel  /etc/nginx/sites-enabled/zitadel
 ```
 nginx -t
 ```
+Option:
+I copied the  fullchain and private key from letsencrypt to Zitadel home directory.
+```
+cp /etc/letsencrypt/live/zitadel-test.hungry-howard.com/fullchain.pem .
+```
+```
+cp /etc/letsencrypt/live/zitadel-test.hungry-howard.com/privkey.pem .
+```
 
 
 ### Zitadel Default Configuration file
