@@ -1599,6 +1599,19 @@ ALTER USER zitadel PASSWORD 'zitadel';
 ALTER USER postgres PASSWORD 'postgres';
 ```
 
+Edit file.
+
+```
+vi /etc/postgresql/16/main/pg_hba.conf
+```
+
+Add to file.
+
+```
+host    all             all             0.0.0.0/0                md5
+host    all             all             ::1/128                  md5
+```
+
 ### Mirror Configuration file
 ```
 vi config.yaml
