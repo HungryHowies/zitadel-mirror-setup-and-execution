@@ -1801,7 +1801,7 @@ Database:
       # It is used in zitadel init to connect to postgres and create a dedicated database for ZITADEL.
       ExistingDatabase: # ZITADEL_DATABASE_POSTGRES_ADMIN_EXISTINGDATABASE
       Username: postgres # ZITADEL_DATABASE_POSTGRES_ADMIN_USERNAME
-      Password: poatgres # ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD
+      Password: postgres # ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD
       SSL:
         Mode: disable # ZITADEL_DATABASE_POSTGRES_ADMIN_SSL_MODE
         RootCert: # ZITADEL_DATABASE_POSTGRES_ADMIN_SSL_ROOTCERT
