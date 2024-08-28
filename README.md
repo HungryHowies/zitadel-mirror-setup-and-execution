@@ -1,9 +1,10 @@
 The following steps show my completed setup prior to executing the mirror command. My goal is to mirror data from  CockroachDB to PostgreSQL.
 I was able to mirror successfully.
 
-Using the following documantion for Mirror setup.
+
 
 ## The following links are from Zitadel Offical documantion I used.
+Using the following documantion for Mirror setup.
 
 https://zitadel.com/docs/self-hosting/manage/cli/mirror#use-cases
 
