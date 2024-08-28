@@ -1,21 +1,22 @@
 The following steps show my completed setup prior to executing the mirror command. My goal is to mirror data from  CockroachDB to PostgreSQL.
-I was unable to mirror successfully and unsure where I am failing.
+I was able to mirror successfully.
 
 Using the following documantion for Mirror setup.
 
 https://zitadel.com/docs/self-hosting/manage/cli/mirror#use-cases
 
-Note: to 2.54.x, 2.55.x and 2.56.x
+
 
 ### Environment:
 ```
 Ubuntu 22.0.4
-Zitadel version v2.54.6
+Zitadel version v2.59.1
 CockroachDB CCL 23.2.7 (tried v24) && PostgreSQL 16
 2 CPU and 4GB RAM
 30 GB  drive
 Nginx  local installation                                                                                                                             
 Let’s encrypt  configured
+
 ```
 ### CockroachDB
 ```
@@ -1587,7 +1588,7 @@ sudo -u postgres psql
 CREATE ROLE zitadel LOGIN;
 ```
 ```
-CREATE DATABASE zitadel;
+create database zitadel;
 ```
 ```
 GRANT CONNECT, CREATE ON DATABASE zitadel TO zitadel;
@@ -1597,6 +1598,10 @@ ALTER USER zitadel PASSWORD 'zitadel';
 ```
 ```
 ALTER USER postgres PASSWORD 'postgres';
+```
+exit
+```
+\q
 ```
 
 Edit file.
@@ -1687,7 +1692,7 @@ Create New configuration file.
 vi defaults-new.yaml
 ```
 
-Add the folloing to  new configuration file is for PostgreSQL database.
+Add the folloing to  new configuration file is for PostgreSQL database. this file will be used for mirror command.
 
 ```
 Log:
@@ -3104,9 +3109,7 @@ InitProjections:
 ```
 
 
-
-
-From the offical documentations
+Steps From the offical documentations
 
 ```
 zitadel init --config /path/to/your/new/config.yaml
@@ -3118,57 +3121,17 @@ zitadel mirror --system --config /path/to/your/mirror/config.yaml # make sure to
 ```
 systemctl stop zitadel
 ```
-### First Command executed .
+### First Command executed.
 
 ```
-root@zitadel003:/usr/local/bin# zitadel init --config /usr/local/bin/defaults-new.yaml
-INFO[0000] initialization started                        caller="/home/runner/work/zitadel/zitadel/cmd/initialise/init.go:75"
-INFO[0000] verify user                                   caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_user.go:39" username=zitadel
-INFO[0000] verify database                               caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_database.go:39" database=zitadel
-INFO[0000] verify grant                                  caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_grant.go:34" database=zitadel user=zitadel
-INFO[0000] verify settings                               caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_settings.go:40" database=zitadel user=zitadel
-INFO[0000] verify zitadel                                caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:78" database=zitadel
-INFO[0000] verify system                                 caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:39"
-INFO[0000] verify encryption keys                        caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:44"
-INFO[0000] verify projections                            caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:49"
-INFO[0000] verify eventstore                             caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:54"
-INFO[0000] verify events tables                          caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:59"
-INFO[0000] verify system sequence                        caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:64"
-INFO[0000] verify unique constraints                     caller="/home/runner/work/zitadel/zitadel/cmd/initialise/verify_zitadel.go:69"
-root@zitadel003:/usr/local/bin#
+zitadel init --config /usr/local/bin/defaults-new.yaml
 ```
 
-### Second commnad  executeed no issues
+### Second commnad executed.
 
- ```
-root@zitadel003:/usr/local/bin# zitadel setup --for-mirror --config /usr/local/bin/defaults-new.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
-INFO[0000] setup started                                 caller="/home/runner/work/zitadel/zitadel/cmd/setup/setup.go:99"
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=14_events_push
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=01_tables
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=02_assets
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=03_default_instance
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=05_last_failed
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=06_resource_owner_columns
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=07_logstore
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=08_auth_token_indexes
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=12_auth_users_otp_columns
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=13_fix_quota_constraints
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=15_current_projection_state
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=16_unique_constraint_lower
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=17_add_offset_col_to_current_states
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=19_add_current_sequences_index
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=20_add_by_user_index_on_session
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=22_active_instance_events_index
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=23_correct_global_unique_constraints
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=24_add_actor_col_to_auth_tokens
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=26_auth_users3
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=config_change
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=projection_tables
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=18_add_lower_fields_to_login_names
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=21_add_block_field_to_limits
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=25_user12_add_lower_fields_to_verified_email
-INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=26_idp_templates6_add_saml_name_id_format
-root@zitadel003:/usr/local/bin#
+```
+zitadel setup --for-mirror --config /usr/local/bin/defaults-new.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
+
 ```
 ###  Execute this mirror command 
 
@@ -3178,19 +3141,8 @@ I had issues. the issues are from verification.
 zitadel mirror --system --replace --config /usr/local/bin/config.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
 ```
 
-Recieve the following error.
 
-```
-root@zitadel003:/usr/local/bin# zitadel mirror --system  --replace   --config /usr/local/bin/config.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
-INFO[0000] assets migrated                               caller="/home/runner/work/zitadel/zitadel/cmd/mirror/system.go:92" count=1 took=35.159277ms
-INFO[0000] encryption keys migrated                      caller="/home/runner/work/zitadel/zitadel/cmd/mirror/system.go:138" count=10 took=197.355795ms
-INFO[0000] auth requests migrated                        caller="/home/runner/work/zitadel/zitadel/cmd/mirror/auth.go:90" count=2 took=17.140438ms
-INFO[0000] start event migration                         caller="/home/runner/work/zitadel/zitadel/cmd/mirror/event_store.go:97" from=0 to=1.7207433088659942e+18
-ERRO[0000] unable to mirror events                       caller="/home/runner/work/zitadel/zitadel/cmd/mirror/event_store.go:191" error="ID=MIGRA-DTHi7 Message=unable to copy events into destination Parent=(ERROR: duplicate key value violates unique constraint \"events2_pkey\" (SQLSTATE 23505))"
-FATA[0000] unable to write failed event                  caller="/home/runner/work/zitadel/zitadel/cmd/mirror/event_store.go:193" error="ID=POSTG-KOM6E Message=Errors.Internal.Eventstore.SequenceNotMatched"
-root@zitadel003:/usr/local/bin# 
-```
- ### Check PostgreSQl
+ ### Check PostgreSQl zitadel database before starting zitadel backup.
 
  Login
  
@@ -3210,16 +3162,17 @@ Check data
 ```
 show * from projections.projects4;
 ```
-If everything is good log out
+If everything is good logout.
+
 ```
 \q
 ```
-I noticed when starting Zitadel service I had issues. I executed the following command.
+I noticed when starting Zitadel service I had issues. So I executed the following command which worked.
 
 ```
 zitadel start   --config defaults-new.yaml  --masterkey "MasterkeyNeedsToHave32Characters"  --tlsMode external
 ```
-Ensure you use a fresh browser tab. to login.
+Ensure you use a fresh browser tab to login.
 
 
 
