@@ -3179,7 +3179,7 @@ Check tables
 ```
 Check data
 ```
-show * from projections.projects4;
+select  * from projections.projects4;
 ```
 If everything is good logout.
 
