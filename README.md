@@ -3188,7 +3188,7 @@ If everything is good logout.
 ```
 ### Ensure cockroachDB is stopped  before starting Zitadel.
 
-I noticed when starting Zitadel service I had issues. So I executed the following command which worked.
+Execute the following command to start Zitadel.
 
 ```
 zitadel start   --config defaults-new.yaml  --masterkey "MasterkeyNeedsToHave32Characters"  --tlsMode external
@@ -3198,6 +3198,15 @@ Ensure you use a fresh browser tab to login.
 Results show my Project  were successfully mirrored to PostgreSQl
 
 ![image](https://github.com/user-attachments/assets/3dd30aed-708f-4e71-a868-2b456aca7c26)
+
+
+### Zitadel Service reconfigure.
+
+Adjust Zitadel's service file by adding the --config flag to the new workign file as shown below.
+ 
+```
+ExecStart=/usr/local/bin/zitadel  start --config defaults-new.yaml --masterkey "MasterkeyNeedsToHave32Characters"  --tlsMode external
+```
 
 
  
