@@ -3,7 +3,12 @@ I was able to mirror successfully.
 
 Using the following documantion for Mirror setup.
 
+## The following links are from Zitadel Offical documantion I used.
+
 https://zitadel.com/docs/self-hosting/manage/cli/mirror#use-cases
+https://zitadel.com/docs/self-hosting/manage/configure
+https://zitadel.com/docs/self-hosting/manage/reverseproxy/nginx
+https://zitadel.com/docs/self-hosting/deploy/linux
 
 
 
