@@ -3148,7 +3148,7 @@ zitadel setup --for-mirror --config /usr/local/bin/defaults-new.yaml  --masterke
 ```
 ###  Execute this mirror command 
 
-I had issues. the issues are from verification.
+I had issues. the issues are from verification which did not affect mirroring my data to PostgreSQL.
 
 ```
 zitadel mirror --system --replace --config /usr/local/bin/config.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
