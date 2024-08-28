@@ -48,7 +48,7 @@ cockroach start-single-node --insecure --background --http-addr :9000 --listen-a
 ```
 ### Zitadel
 ```
-wget https://github.com/zitadel/zitadel/releases/download/v2.54.7/zitadel-linux-amd64.tar.gz
+wget https://github.com/zitadel/zitadel/releases/download/v2.59.1/zitadel-linux-amd64.tar.gz
 ```
 ```
 tar -zxvf zitadel-linux-amd64.tar.gz
