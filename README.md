@@ -72,6 +72,11 @@ nginx -t
 ```
 Option:
 I copied the  fullchain and private key from letsencrypt to Zitadel home directory.
+
+Change Directory
+```
+cd /usr/local/bin
+```
 ```
 cp /etc/letsencrypt/live/zitadel-test.hungry-howard.com/fullchain.pem .
 ```
