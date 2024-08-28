@@ -79,6 +79,11 @@ ln -s /etc/nginx/sites-available/zitadel  /etc/nginx/sites-enabled/zitadel
 ```
 nginx -t
 ```
+Restart NginX
+
+```
+systemctl restart nginx
+```
 Option:
 I copied the  fullchain and private key from letsencrypt to Zitadel home directory.
 
