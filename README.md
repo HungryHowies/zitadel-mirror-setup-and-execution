@@ -3113,8 +3113,12 @@ zitadel init --config /path/to/your/new/config.yaml
 zitadel setup --for-mirror --config /path/to/your/new/config.yaml # make sure to set --tlsMode and masterkey analog to your current deployment
 zitadel mirror --system --config /path/to/your/mirror/config.yaml # make sure to set --tlsMode and masterkey analog to your current deployment
 ```
+### Stop Zitadel service
 
-### First Command executed no issues.
+```
+systemctl stop zitadel
+```
+### First Command executed .
 
 ```
 root@zitadel003:/usr/local/bin# zitadel init --config /usr/local/bin/defaults-new.yaml
@@ -3166,7 +3170,9 @@ INFO[0000] verify migration                              caller="/home/runner/wo
 INFO[0000] verify migration                              caller="/home/runner/work/zitadel/zitadel/internal/migration/migration.go:43" name=26_idp_templates6_add_saml_name_id_format
 root@zitadel003:/usr/local/bin#
 ```
-###  Execute this mirror command I had issues.
+###  Execute this mirror command 
+
+I had issues. the issues are from verification.
 
 ```
 zitadel mirror --system --replace --config /usr/local/bin/config.yaml  --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode external
@@ -3184,6 +3190,40 @@ ERRO[0000] unable to mirror events                       caller="/home/runner/wo
 FATA[0000] unable to write failed event                  caller="/home/runner/work/zitadel/zitadel/cmd/mirror/event_store.go:193" error="ID=POSTG-KOM6E Message=Errors.Internal.Eventstore.SequenceNotMatched"
 root@zitadel003:/usr/local/bin# 
 ```
+ ### Check PostgreSQl
+
+ Login
+ 
+```
+sudo -u postgres psql
+```
+Change Database
+```
+\c zitadel
+```
+
+Check tables
+```
+\dt *.*
+```
+Check data
+```
+show * from projections.projects4;
+```
+If everything is good log out
+```
+\q
+```
+I noticed when starting Zitadel service I had issues. I executed the following command.
+
+```
+zitadel start   --config defaults-new.yaml  --masterkey "MasterkeyNeedsToHave32Characters"  --tlsMode external
+```
+Ensure you use a fresh browser tab. to login.
+
+
+
+ 
 
 
 
