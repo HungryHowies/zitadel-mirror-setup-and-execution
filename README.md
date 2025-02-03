@@ -3207,6 +3207,35 @@ Adjust Zitadel's service file by adding the --config flag to the new workign fil
 ```
 ExecStart=/usr/local/bin/zitadel  start --config defaults-new.yaml --masterkey "MasterkeyNeedsToHave32Characters"  --tlsMode external
 ```
+Cleaning up CockroachDB
+
+Wait 7 days then remove CockroachDB executable and  Directory's. This would include the directory created for files libgeos.so and libgeos_c.so. The  CockroachDB data directory and the download for CockroachDB executable.
+
+Remove the executable file.
+
+```
+rm /usr/local/bin/cockroach
+```
+Remove cockroach directory.
+
+```
+rm -rf /usr/local/lib/cockroach
+```
+Find and remove cockroach-data directory. 
+
+```
+rm -rf /home/sysadmin/cockroach-data
+```
+Remove  the download file from Cockroach.
+
+```
+ rm -rf /home/cockroach-v23.2.6.linux-amd64
+```
+```
+rm -rf /home/sysadmin/cockroach-v23.1.12.linux-amd64
+```
+
+
 
 
  
